@@ -4,26 +4,32 @@ import { FaGitlab, FaInstagram, FaXTwitter } from 'react-icons/fa6';
 
 export const socialMedias = [
   {
+    title: 'Email',
     Icon: MailIcon,
     url: 'mailto:imam.alfarizi.777@gmail.com',
   },
   {
+    title: 'Github',
     Icon: GitHubLogoIcon,
     url: 'https://github.com/mamlzy',
   },
   {
+    title: 'Gitlab',
     Icon: FaGitlab,
     url: 'https://gitlab.com/mamlzy',
   },
   {
+    title: 'LinkedIn',
     Icon: LinkedInLogoIcon,
     url: 'https://www.linkedin.com/in/mamlzy',
   },
   {
+    title: 'X',
     Icon: FaXTwitter,
     url: 'https://twitter.com/mamlzy',
   },
   {
+    title: 'Instagram',
     Icon: FaInstagram,
     url: 'https://www.instagram.com/mamlzy',
   },

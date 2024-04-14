@@ -36,6 +36,7 @@ export default function Home() {
                   key={social.url}
                   href={social.url}
                   target='_blank'
+                  aria-label={social.title}
                   className={cn(
                     buttonVariants({ variant: 'ghost' }),
                     'size-8 border p-0'

@@ -1,113 +1,183 @@
 import Image from 'next/image';
+import Link from 'next/link';
+import { educations, projects, skills, socialMedias, works } from '@/data';
+import { GlobeIcon } from 'lucide-react';
+import Me from 'public/me.jpeg';
+
+import { cn } from '@/lib/utils';
+import { Badge } from '@/components/ui/badge';
+import { buttonVariants } from '@/components/ui/button';
 
 export default function Home() {
   return (
-    <main className='flex min-h-screen flex-col items-center justify-between p-24'>
-      <div className='z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex'>
-        <p className='fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30'>
-          Get started by editing&nbsp;
-          <code className='font-mono font-bold'>src/app/page.tsx</code>
-        </p>
-        <div className='fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none'>
-          <a
-            className='pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0'
-            href='https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app'
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            By{' '}
-            <Image
-              src='/vercel.svg'
-              alt='Vercel Logo'
-              className='dark:invert'
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <main className='p-4 md:p-16'>
+      <section className='mx-auto max-w-2xl space-y-8'>
+        {/* Me */}
+        <div className='flex items-center justify-between gap-x-2'>
+          <div className='flex-1 space-y-1.5'>
+            <h1 className='text-2xl font-bold'>Imam Alfarizi Syahputra</h1>
+            <p className='max-w-md text-pretty font-mono text-sm text-muted-foreground'>
+              Full Stack Developer with a passion for staying updated with the
+              latest technologies
+            </p>
+            <p className='text-xs text-muted-foreground'>
+              <Link
+                href='https://www.google.com/maps/place/Depok'
+                target='_blank'
+                className='flex items-center hover:underline'
+              >
+                <GlobeIcon className='mr-1 size-3' /> Depok, Jawa Barat,
+                Indonesia
+              </Link>
+            </p>
+            <div className='flex items-center gap-x-1 pt-1 text-muted-foreground'>
+              {socialMedias.map((social) => (
+                <Link
+                  key={social.url}
+                  href={social.url}
+                  target='_blank'
+                  className={cn(
+                    buttonVariants({ variant: 'ghost' }),
+                    'size-8 border p-0'
+                  )}
+                >
+                  <social.Icon className='size-4' />
+                </Link>
+              ))}
+            </div>
+          </div>
+          <Image
+            src={Me}
+            alt=''
+            width='0'
+            height='0'
+            sizes='100vw'
+            placeholder='blur'
+            className='size-28 rounded-xl object-cover'
+            quality={100}
+          />
         </div>
-      </div>
 
-      <div className="before:bg-gradient-radial after:bg-gradient-conic relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className='relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert'
-          src='/next.svg'
-          alt='Next.js Logo'
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className='mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left'>
-        <a
-          href='https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app'
-          className='group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          <h2 className='mb-3 text-2xl font-semibold'>
-            Docs{' '}
-            <span className='inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none'>
-              -&gt;
-            </span>
-          </h2>
-          <p className='m-0 max-w-[30ch] text-sm opacity-50'>
-            Find in-depth information about Next.js features and API.
+        {/* About */}
+        <section className='space-y-3'>
+          <h2 className='text-xl font-bold'>About</h2>
+          <p className='text-pretty font-mono text-sm text-muted-foreground'>
+            I am Full Stack Developer specializing in JavaScript/TypeScript
+            technologies. My expertise lies in using modern frameworks like
+            Next.js/React for front-end development and Node.js for back-end
+            solutions. I am passionate about staying updated with the latest
+            technologies to deliver high-quality and innovative web
+            applications.
           </p>
-        </a>
+        </section>
 
-        <a
-          href='https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app'
-          className='group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          <h2 className='mb-3 text-2xl font-semibold'>
-            Learn{' '}
-            <span className='inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none'>
-              -&gt;
-            </span>
-          </h2>
-          <p className='m-0 max-w-[30ch] text-sm opacity-50'>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
+        {/* Works */}
+        <section className='space-y-3'>
+          <h2 className='text-xl font-bold'>Work Experience</h2>
 
-        <a
-          href='https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app'
-          className='group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          <h2 className='mb-3 text-2xl font-semibold'>
-            Templates{' '}
-            <span className='inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none'>
-              -&gt;
-            </span>
-          </h2>
-          <p className='m-0 max-w-[30ch] text-sm opacity-50'>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
+          {works.map((work) => (
+            <div key={work.company} className='space-y-1.5'>
+              <div className='flex items-center justify-between'>
+                <h3 className='space-x-1 font-semibold'>
+                  <Link
+                    href={work.companyUrl}
+                    target='_blank'
+                    className='hover:underline'
+                  >
+                    {work.company}
+                  </Link>
+                  {work.badges.map((badge) => (
+                    <Badge key={badge} variant='secondary'>
+                      {badge}
+                    </Badge>
+                  ))}
+                </h3>
+                <span className='text-sm tabular-nums text-muted-foreground'>
+                  {work.start} - {work.end || 'Present'}
+                </span>
+              </div>
+              <h4 className='font-mono text-sm leading-none'>{work.role}</h4>
+              <p className='mt-2 text-pretty font-mono text-xs text-muted-foreground'>
+                {work.description}
+              </p>
+            </div>
+          ))}
+        </section>
 
-        <a
-          href='https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app'
-          className='group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          <h2 className='mb-3 text-2xl font-semibold'>
-            Deploy{' '}
-            <span className='inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none'>
-              -&gt;
-            </span>
-          </h2>
-          <p className='m-0 max-w-[30ch] text-balance text-sm opacity-50'>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+        {/* Education */}
+        <section className='space-y-3'>
+          <h2 className='text-xl font-bold'>Education</h2>
+          {educations.map((education) => (
+            <div key={education.school} className='space-y-1.5'>
+              <div className='flex items-center justify-between'>
+                <h3 className='space-x-1 font-semibold'>{education.school}</h3>
+                <span className='text-sm tabular-nums text-muted-foreground'>
+                  {education.start} - {education.end || 'Present'}
+                </span>
+              </div>
+              <p className='mt-2 text-pretty font-mono text-xs text-muted-foreground'>
+                {education.description}
+              </p>
+            </div>
+          ))}
+        </section>
+
+        {/* Skills */}
+        <section className='space-y-3'>
+          <h2 className='text-xl font-bold'>Skills</h2>
+          <div className='flex flex-wrap items-center gap-1'>
+            {skills.map((skill) => (
+              <Badge key={skill} className='bg-primary/80 hover:bg-primary/60'>
+                {skill}
+              </Badge>
+            ))}
+          </div>
+        </section>
+
+        {/* Projects */}
+        <section className='space-y-3'>
+          <h2 className='text-xl font-bold'>Projects</h2>
+          <div className='grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3'>
+            {projects.map((project) => (
+              <div
+                key={project.title}
+                className='rounded-lg border border-muted bg-card p-3 text-card-foreground'
+              >
+                <div className='space-y-1'>
+                  <h3 className='flex items-center gap-1 font-semibold tracking-tight'>
+                    {project.url ? (
+                      <Link
+                        href={project.url}
+                        target='_blank'
+                        className='inline-flex items-center gap-1 hover:underline'
+                      >
+                        {project.title}{' '}
+                        <span className='size-1 rounded-full bg-green-500' />
+                      </Link>
+                    ) : (
+                      project.title
+                    )}
+                  </h3>
+                  <p className='font-mono text-xs text-muted-foreground'>
+                    {project.description}
+                  </p>
+                </div>
+                <div className='mt-2 flex flex-wrap gap-1'>
+                  {project.techtStacks.map((stack) => (
+                    <Badge
+                      key={stack}
+                      variant='secondary'
+                      className='px-1 text-[10px]'
+                    >
+                      {stack}
+                    </Badge>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      </section>
     </main>
   );
 }
